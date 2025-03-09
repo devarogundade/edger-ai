@@ -1,6 +1,6 @@
 import { walletConnect } from "@wagmi/connectors";
 import { defaultWagmiConfig } from "@web3modal/wagmi";
-import { defineChain } from "viem";
+import { sonic } from "viem/chains";
 
 const metadata = {
   name: "EdgerAI",
@@ -9,27 +9,7 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-export const sonicTestnet = defineChain({
-  id: 57_054,
-  name: "Sonic Testnet",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Sonic",
-    symbol: "S",
-  },
-  rpcUrls: {
-    default: { http: ["https://rpc.blaze.soniclabs.com"] },
-  },
-  blockExplorers: {
-    default: {
-      name: "Sonic Testnet Explorer",
-      url: "https://testnet.soniclabs.com/",
-    },
-  },
-  testnet: true,
-});
-
-export const chains = [sonicTestnet];
+export const chains = [sonic];
 
 export const config = defaultWagmiConfig({
   // @ts-ignore

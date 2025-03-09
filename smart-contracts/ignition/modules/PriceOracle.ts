@@ -2,9 +2,12 @@
 // Learn more about it at https://hardhat.org/ignition
 
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+import ChainlinkModule from "./Chainlink";
 
 const PriceOracleModule = buildModule("PriceOracleModule", (m) => {
-  const priceOracle = m.contract("PriceOracle");
+  const { chainlink } = m.useModule(ChainlinkModule);
+
+  const priceOracle = m.contract("PriceOracle", [chainlink]);
 
   return { priceOracle };
 });

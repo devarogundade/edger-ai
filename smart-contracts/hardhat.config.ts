@@ -42,6 +42,7 @@ module.exports = {
   etherscan: {
     apiKey: {
       sonicTestnet: SONIC_API_KEY,
+      sonic: SONIC_API_KEY,
     },
     customChains: [
       {

@@ -11,11 +11,11 @@ const ETH_FEED = "0x824364077993847f71293B24ccA8567c00c2de11";
 const ChainlinkModule = buildModule("ChainlinkModule", (m) => {
   const chainlink = m.contract("Chainlink");
 
-  m.call(chainlink, "setFeed", [SONIC_COIN, SONIC_FEED]);
+  m.call(chainlink, "setFeed", [SONIC_COIN, SONIC_FEED], { id: "SONIC_FEED" });
 
-  m.call(chainlink, "setFeed", [BTC, BTC_FEED]);
+  m.call(chainlink, "setFeed", [BTC, BTC_FEED], { id: "BTC_FEED" });
 
-  m.call(chainlink, "setFeed", [ETH, ETH_FEED]);
+  m.call(chainlink, "setFeed", [ETH, ETH_FEED], { id: "ETH_FEED" });
 
   return { chainlink };
 });

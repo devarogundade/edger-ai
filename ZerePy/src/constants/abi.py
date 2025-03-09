@@ -135,7 +135,13 @@ STRATEGY_ABI = [
         "inputs": [
             {"internalType": "address", "name": "factory_", "type": "address"},
             {"internalType": "address", "name": "creator_", "type": "address"},
+            {
+                "internalType": "enum Enums.Visibility",
+                "name": "visibility_",
+                "type": "uint8",
+            },
             {"internalType": "uint256", "name": "depositUsdMin_", "type": "uint256"},
+            {"internalType": "uint256", "name": "forkCost_", "type": "uint256"},
             {
                 "internalType": "address[]",
                 "name": "initialTokens_",
@@ -226,6 +232,27 @@ STRATEGY_ABI = [
             },
         ],
         "name": "Approval",
+        "type": "event",
+    },
+    {
+        "anonymous": False,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "enum Enums.ActionCall",
+                        "name": "action",
+                        "type": "uint8",
+                    },
+                    {"internalType": "bytes", "name": "data", "type": "bytes"},
+                ],
+                "indexed": False,
+                "internalType": "struct Params.ExecuteCall",
+                "name": "call",
+                "type": "tuple",
+            }
+        ],
+        "name": "ExecuteCalled",
         "type": "event",
     },
     {
@@ -386,6 +413,13 @@ STRATEGY_ABI = [
     },
     {
         "inputs": [],
+        "name": "creator",
+        "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "stateMutability": "view",
+        "type": "function",
+    },
+    {
+        "inputs": [],
         "name": "decimals",
         "outputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
         "stateMutability": "view",
@@ -426,6 +460,34 @@ STRATEGY_ABI = [
         "type": "function",
     },
     {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "enum Enums.ActionCall",
+                        "name": "action",
+                        "type": "uint8",
+                    },
+                    {"internalType": "bytes", "name": "data", "type": "bytes"},
+                ],
+                "internalType": "struct Params.ExecuteCall",
+                "name": "call",
+                "type": "tuple",
+            }
+        ],
+        "name": "executeCall",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function",
+    },
+    {
+        "inputs": [],
+        "name": "factory",
+        "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "stateMutability": "view",
+        "type": "function",
+    },
+    {
         "inputs": [],
         "name": "getAllowedActions",
         "outputs": [
@@ -450,6 +512,13 @@ STRATEGY_ABI = [
     },
     {
         "inputs": [],
+        "name": "getForkCost",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "stateMutability": "view",
+        "type": "function",
+    },
+    {
+        "inputs": [],
         "name": "getSplitRatio",
         "outputs": [{"internalType": "uint256[]", "name": "", "type": "uint256[]"}],
         "stateMutability": "view",
@@ -467,6 +536,13 @@ STRATEGY_ABI = [
         "name": "name",
         "outputs": [{"internalType": "string", "name": "", "type": "string"}],
         "stateMutability": "view",
+        "type": "function",
+    },
+    {
+        "inputs": [],
+        "name": "onFork",
+        "outputs": [],
+        "stateMutability": "payable",
         "type": "function",
     },
     {

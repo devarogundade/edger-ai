@@ -13,7 +13,7 @@ import { poolAbi } from "@/abis/pool";
 import { priceOracleAbi } from "@/abis/priceoracle";
 
 const FactoryContract = {
-  address: "0x84b01C2313c04e70E79C003c668321a32BA16950" as Hex,
+  address: "0x5c77247e37dBE17B2801f60bdcA956eCCA428477" as Hex,
 
   async createStrategy(
     tokens: Hex[],
@@ -185,7 +185,7 @@ const StrategyContract = {
 };
 
 const RevenueContract = {
-  address: "0x452bcE5b437621Fe9B78CefAE3A03dacc84d0737" as Hex,
+  address: "0x93cdD8AD086B719C7F56D540B38b373010481471" as Hex,
 
   async fund(to: Hex, amount: bigint): Promise<Hex | null> {
     try {
@@ -421,7 +421,7 @@ const MultiTokenPoolContract = {
 };
 
 const PriceOracleContract = {
-  address: "0xC17A0E7D6D3B70c9f3e8ab918aA0877CbfC70fA3" as Hex,
+  address: "0xccC1cbFD3978ed0EaFAaE5BfCBCcBF44bE011484" as Hex,
 
   async getAmountOutInUsd(amountIn: bigint, tokenIn: Hex): Promise<bigint> {
     try {

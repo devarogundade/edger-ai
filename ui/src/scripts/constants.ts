@@ -1,7 +1,7 @@
 import { zeroAddress } from "viem";
 import type { AgentJson, LLM, Token } from "./types";
 
-export const explorerUrl = "https://testnet.sonicscan.org";
+export const explorerUrl = "https://sonicscan.org";
 
 export const SONIC_COIN = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 
@@ -116,13 +116,13 @@ export const tokens: Token[] = [
     name: "Bitcoin",
     symbol: "WBTC",
     image: "/images/wbtc.png",
-    address: "0xBF67F8f661DAE74047045A31FC020b1b17640B50",
+    address: "0x0555e30da8f98308edb960aa94c0db47230d2b9c",
   },
   {
     name: "Ethereum",
     symbol: "WETH",
     image: "/images/weth.png",
-    address: "0x5321f62032f5Cd588d5a524037672A4018B68277",
+    address: "0x50c42dEAcD8Fc9773493ED674b675bE577f2634b",
   },
 ];
 
