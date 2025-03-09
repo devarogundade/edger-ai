@@ -1,0 +1,39 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build"
+  },
+  "dependencies": {
+    "@wagmi/connectors": "^5.7.7",
+    "@wagmi/core": "^2.16.4",
+    "@web3modal/wagmi": "^5.1.11",
+    "axios": "^1.7.9",
+    "bignumber.js": "^9.1.2",
+    "firebase": "^11.3.0",
+    "pinia": "^2.3.1",
+    "timeago.js": "^4.0.2",
+    "viem": "^2.22.23",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "wagmi": "^2.14.11"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
+    "@vue/tsconfig": "^0.7.0",
+    "npm-run-all2": "^7.0.2",
+    "typescript": "~5.7.3",
+    "vite": "^6.0.11",
+    "vite-plugin-vue-devtools": "^7.7.1",
+    "vue-tsc": "^2.2.0"
+  }
+}
