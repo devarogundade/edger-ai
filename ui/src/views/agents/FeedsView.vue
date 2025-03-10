@@ -110,7 +110,7 @@ onMounted(() => {
                 <div class="detail_content">
                     <img :src="'/images/user.png'" alt="">
                     <div class="detail_text">
-                        <p>{{ post.text }} </p>
+                        <h5>{{ post.text }} </h5>
                         <a :href="`${explorerUrl}/address/${post.creator}`" target="_blank">
                             <p>{{ Converter.fineAddress(post.creator, 4) }}
                                 <OutIcon />
@@ -120,7 +120,7 @@ onMounted(() => {
                 </div>
 
                 <div class="detail_view">
-                    <div class="views">Timestamp</div>
+                    <div class="views">Time</div>
                     <div class="views_count">
                         <p>{{ Converter.fullMonth(new Date(post.timestamp)) }}</p>
                         <UserGroupIcon />
@@ -264,7 +264,8 @@ onMounted(() => {
 }
 
 .detail_content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 100px;
     align-items: flex-end;
     gap: 16px;
 }
@@ -281,9 +282,9 @@ onMounted(() => {
     margin-top: 4px;
 }
 
-.detail_text >p {
-    font-size: 14px;
-    line-height: 24px;
+.detail_text>h5 {
+    font-size: 16px;
+    line-height: 26px;
     font-weight: 500;
     line-height: 14px;
     color: var(--tx-normal);
