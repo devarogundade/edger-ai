@@ -7,7 +7,7 @@ import { onMounted, ref } from 'vue';
 import DepositPopup from '@/components/DepositPopup.vue';
 import WithdrawPopup from '@/components/WithdrawPopup.vue';
 import type { Activity, AgentJson } from '@/scripts/types';
-import { formatEther, type Hex } from 'viem';
+import { formatEther, formatUnits, type Hex } from 'viem';
 import Client from '@/scripts/client';
 import ProgressBox from '@/components/ProgressBox.vue';
 import { explorerUrl, tokens } from '@/scripts/constants';
@@ -93,7 +93,6 @@ const getAgent = async (strategyAddress: Hex) => {
     loading.value = false;
 
     setInterval(() => {
-
         getActivities(strategyAddress);
     }, (agent.value?.loop_delay || 60) * 1_000);
 };
@@ -104,6 +103,7 @@ const getTotalLockedValue = async () => {
     const tokens = await MultiTokenPoolContract.getTokens(
         agent.value.strategy_address
     );
+
     const amounts = await MultiTokenPoolContract.getBalances(
         agent.value.strategy_address
     );
@@ -115,9 +115,7 @@ const getTotalLockedValue = async () => {
         tokens
     );
 
-    if (!amountsInUsd) return;
-
-    tvl.value = Number(amountsInUsd);
+    tvl.value = Number(formatUnits(amountsInUsd, 18));
 };
 
 const refresh = () => {

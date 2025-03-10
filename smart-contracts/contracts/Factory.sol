@@ -53,7 +53,7 @@ contract Factory is IFactory {
     }
 
     function forkStrategy(address strategy) external payable returns (address) {
-        Strategy base = Strategy(strategy);
+        Strategy base = Strategy(payable(strategy));
 
         Strategy fork = new Strategy(
             address(this),

@@ -45,10 +45,10 @@ const onTaskConfigChanged = (event: any, index: number) => {
 const create = async () => {
     if (creating.value) return;
 
-    if (agent.value.minimum_deposit <= 0) {
+    if (agent.value.minimum_deposit < 1) {
         return notify.push({
             title: 'Validation',
-            description: "Minimum deposit USD cannot be zero.",
+            description: "Minimum deposit USD cannot less than $1.",
             category: "error"
         });
     }
@@ -255,7 +255,7 @@ const updateExampleAccounts = (example_accounts: string) => {
 
 const updateExampleChannels = (example_channels: string) => {
     agent.value.example_channels = example_channels.split(',')
-        .map(example_channel => Number(example_channel));
+        .map(example_channel => example_channel);
 };
 
 const updateLLM = (llm: LLM) => {

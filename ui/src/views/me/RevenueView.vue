@@ -8,7 +8,7 @@ import type { Revenue, RevenuePrice } from '@/scripts/types';
 import { RevenueContract, PriceOracleContract } from '@/scripts/contract';
 import { SONIC_COIN, explorerUrl } from '@/scripts/constants';
 import Converter from '@/scripts/converter';
-import { formatEther } from 'viem';
+import { formatEther, formatUnits } from 'viem';
 import ClaimPopup from '@/components/ClaimPopup.vue';
 
 const claim = ref(false);
@@ -36,7 +36,10 @@ const getRevenue = async (load: boolean = false) => {
         SONIC_COIN
     );
 
-    revenuePrice.value = { claimedInUsd, unClaimedInUsd };
+    revenuePrice.value = {
+        claimedInUsd: Number(formatUnits(claimedInUsd, 18 + 8)),
+        unClaimedInUsd: Number(formatUnits(unClaimedInUsd, 18 + 8)),
+    };
 
     loading.value = false;
 };
@@ -63,7 +66,7 @@ onMounted(() => {
                         <div class="revenue_amount_name_text">
                             <img src="/images/sonic.png" alt="sonic">
                             <p><span>{{ Converter.toMoney(Number(formatEther(revenue.unClaimed))) }}</span> S ~ ${{
-                                Converter.toMoney(Number(formatEther(revenuePrice.unClaimedInUsd))) }}</p>
+                                Converter.toMoney(revenuePrice.unClaimedInUsd) }}</p>
                         </div>
 
                         <div class="revenue_amount_percent">
@@ -88,7 +91,7 @@ onMounted(() => {
                         <div class="revenue_amount_name_text">
                             <img src="/images/sonic.png" alt="sonic">
                             <p><span>{{ Converter.toMoney(Number(formatEther(revenue.claimed))) }}</span> S ~ ${{
-                                Converter.toMoney(Number(revenuePrice.claimedInUsd)) }}</p>
+                                Converter.toMoney(revenuePrice.claimedInUsd) }}</p>
                         </div>
 
                         <div class="revenue_amount_percent">
@@ -116,8 +119,8 @@ onMounted(() => {
                         <div class="revenue_claim_balance_images">
                             <img src="/images/sonic.png" alt="sonic">
                         </div>
-                        <p>~ ${{ Converter.toMoney(Number(revenuePrice.claimedInUsd +
-                            revenuePrice.unClaimedInUsd)) }}</p>
+                        <p>~ ${{ Converter.toMoney(revenuePrice.claimedInUsd +
+                            revenuePrice.unClaimedInUsd) }}</p>
                     </div>
                 </div>
 

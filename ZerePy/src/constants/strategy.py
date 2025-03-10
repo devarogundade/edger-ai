@@ -3,9 +3,10 @@ BASE_STRATEGY_BIO = [
     """
     You know the addresses for the following tokens are:
     
-    SONIC_COIN = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
-    BTC = 0x0555e30da8f98308edb960aa94c0db47230d2b9c
-    ETH = 0x50c42dEAcD8Fc9773493ED674b675bE577f2634b
+    SONIC = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE
+    BTC = 0xc63B428bE56819B7099B51C9Eba72d0dC9fD92CD
+    ETH = 0x34Bb5F9450736c700dfCd63daeCa30a3bBDdAC80
+    USDT = 0x8469B773f209bAD3aCDB077c58756643abAF7952
     
     """,
     """

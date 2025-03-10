@@ -13,7 +13,7 @@ import { poolAbi } from "@/abis/pool";
 import { priceOracleAbi } from "@/abis/priceoracle";
 
 const FactoryContract = {
-  address: "0x5c77247e37dBE17B2801f60bdcA956eCCA428477" as Hex,
+  address: "0x951BFcC5c5e4db35a48C8E366043eb7C7C571baB" as Hex,
 
   async createStrategy(
     tokens: Hex[],
@@ -185,7 +185,7 @@ const StrategyContract = {
 };
 
 const RevenueContract = {
-  address: "0x93cdD8AD086B719C7F56D540B38b373010481471" as Hex,
+  address: "0x3f63E16D1cAd611414719e063D3f7cD4Ea039c53" as Hex,
 
   async fund(to: Hex, amount: bigint): Promise<Hex | null> {
     try {
@@ -421,7 +421,7 @@ const MultiTokenPoolContract = {
 };
 
 const PriceOracleContract = {
-  address: "0xccC1cbFD3978ed0EaFAaE5BfCBCcBF44bE011484" as Hex,
+  address: "0xEd79079F86712d439F5D837DA13bd5Ed1568474e" as Hex,
 
   async getAmountOutInUsd(amountIn: bigint, tokenIn: Hex): Promise<bigint> {
     try {
@@ -429,9 +429,11 @@ const PriceOracleContract = {
         abi: priceOracleAbi,
         address: this.address,
         functionName: "getAmountOutInUsd",
-        args: [amountIn > BigInt(0) ? amountIn : BigInt(1), tokenIn],
+        args: [amountIn, tokenIn],
       })) as bigint;
     } catch (error) {
+      console.log(error);
+
       return BigInt(0);
     }
   },
@@ -445,12 +447,7 @@ const PriceOracleContract = {
         abi: priceOracleAbi,
         address: this.address,
         functionName: "getAmountsOutInUsd",
-        args: [
-          amountIns.map((amountIn) =>
-            amountIn > BigInt(0) ? amountIn : BigInt(1)
-          ),
-          tokenIns,
-        ],
+        args: [amountIns, tokenIns],
       })) as bigint;
     } catch (error) {
       console.log(error);
@@ -469,7 +466,7 @@ const PriceOracleContract = {
         abi: priceOracleAbi,
         address: this.address,
         functionName: "getAmountOut",
-        args: [amountIn > BigInt(0) ? amountIn : BigInt(1), tokenIn, tokenOut],
+        args: [amountIn, tokenIn, tokenOut],
       })) as bigint;
     } catch (error) {
       return BigInt(0);
@@ -486,13 +483,7 @@ const PriceOracleContract = {
         abi: priceOracleAbi,
         address: this.address,
         functionName: "getAmountsOut",
-        args: [
-          amountIns.map((amountIn) =>
-            amountIn > BigInt(0) ? amountIn : BigInt(1)
-          ),
-          tokenIns,
-          tokenOut,
-        ],
+        args: [amountIns, tokenIns, tokenOut],
       })) as bigint;
     } catch (error) {
       return BigInt(0);

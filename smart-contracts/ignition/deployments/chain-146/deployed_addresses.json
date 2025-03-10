@@ -1,6 +1,9 @@
 {
-  "ChainlinkModule#Chainlink": "0xF3F9b7d82650F38795200326B6DE933f4E78965f",
-  "RevenueModule#Revenue": "0x93cdD8AD086B719C7F56D540B38b373010481471",
-  "PriceOracleModule#PriceOracle": "0xccC1cbFD3978ed0EaFAaE5BfCBCcBF44bE011484",
-  "FactoryModule#Factory": "0x5c77247e37dBE17B2801f60bdcA956eCCA428477"
+  "TokensModule#tUSDT": "0x8469B773f209bAD3aCDB077c58756643abAF7952",
+  "TokensModule#tWBTC": "0xc63B428bE56819B7099B51C9Eba72d0dC9fD92CD",
+  "TokensModule#tWETH": "0x34Bb5F9450736c700dfCd63daeCa30a3bBDdAC80",
+  "ChainlinkModule#Chainlink": "0x7aB312817AF28F86B8c2f19bD2fd129Ec49aF6B5",
+  "RevenueModule#Revenue": "0x50cD960310C5b273B1eD083AeDCF573f4DDb3A3b",
+  "PriceOracleModule#PriceOracle": "0x4d5FaF37B4acA71Abe52Ecd741B4079796F0A825",
+  "FactoryModule#Factory": "0xAe140a39625119551A1E9e4E82FAF354B48Ec948"
 }

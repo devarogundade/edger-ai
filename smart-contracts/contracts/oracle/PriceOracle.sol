@@ -15,9 +15,9 @@ contract PriceOracle is IPriceOracle {
         uint256 amountIn,
         address tokenIn
     ) public view override returns (uint256 amountOut) {
-        (uint256 price, uint80 decimal) = _chainlink.getPrice(tokenIn);
+        (uint256 price, ) = _chainlink.getPrice(tokenIn);
 
-        amountOut = (price * amountIn) / (10 ** decimal);
+        amountOut = price * amountIn;
     }
 
     function getAmountsOutInUsd(
@@ -37,14 +37,10 @@ contract PriceOracle is IPriceOracle {
     ) public view override returns (uint256 amountOut) {
         if (tokenIn == tokenOut) return amountIn;
 
-        (uint256 basePrice, uint80 baseDecimal) = _chainlink.getPrice(tokenIn);
-        (uint256 quotePrice, uint80 quoteDecimal) = _chainlink.getPrice(
-            tokenOut
-        );
+        (uint256 basePrice, ) = _chainlink.getPrice(tokenIn);
+        (uint256 quotePrice, ) = _chainlink.getPrice(tokenOut);
 
-        amountOut =
-            (basePrice * amountIn * (10 ** quoteDecimal)) /
-            (quotePrice * (10 ** baseDecimal));
+        amountOut = (basePrice * amountIn) / (quotePrice);
     }
 
     function getAmountsOut(

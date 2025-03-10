@@ -24,6 +24,7 @@ export type Token = {
   name: string;
   symbol: string;
   image: string;
+  decimals: number;
 };
 
 export type LLM = {
@@ -55,7 +56,7 @@ export type AgentJson = {
   traits: string[];
   examples: any[];
   example_accounts: any[];
-  example_channels: number[];
+  example_channels: string[];
   loop_delay: number;
   config: {
     name: string;
@@ -103,8 +104,8 @@ export type Revenue = {
 };
 
 export type RevenuePrice = {
-  claimedInUsd: bigint;
-  unClaimedInUsd: bigint;
+  claimedInUsd: number;
+  unClaimedInUsd: number;
 };
 
 export enum ActionCall {

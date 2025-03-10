@@ -33,7 +33,7 @@ export const sample: AgentJson = {
   ],
   examples: [],
   example_accounts: [],
-  example_channels: [1339597201759932460],
+  example_channels: ["1339597201759932460"],
   loop_delay: 360,
   config: [
     {
@@ -64,7 +64,7 @@ export const sample: AgentJson = {
   time_based_multipliers: {},
   tokens: [
     "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-    "0x0555e30da8f98308edb960aa94c0db47230d2b9c",
+    "0xc63B428bE56819B7099B51C9Eba72d0dC9fD92CD",
   ],
   minimum_deposit: 1,
   visibility: "public",
@@ -111,18 +111,28 @@ export const tokens: Token[] = [
     symbol: "S",
     image: "/images/sonic.png",
     address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    decimals: 18,
   },
   {
     name: "Bitcoin",
     symbol: "WBTC",
     image: "/images/wbtc.png",
-    address: "0x0555e30da8f98308edb960aa94c0db47230d2b9c",
+    address: "0xc63B428bE56819B7099B51C9Eba72d0dC9fD92CD",
+    decimals: 8,
   },
   {
     name: "Ethereum",
     symbol: "WETH",
     image: "/images/weth.png",
-    address: "0x50c42dEAcD8Fc9773493ED674b675bE577f2634b",
+    address: "0x34Bb5F9450736c700dfCd63daeCa30a3bBDdAC80",
+    decimals: 18,
+  },
+  {
+    name: "USDT",
+    symbol: "USDT",
+    image: "/images/usdt.png",
+    address: "0x8469B773f209bAD3aCDB077c58756643abAF7952",
+    decimals: 6,
   },
 ];
 

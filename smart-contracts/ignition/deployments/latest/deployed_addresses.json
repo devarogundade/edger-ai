@@ -1,0 +1,6 @@
+{
+  "ChainlinkModule#Chainlink": "0x40Ce6Ff4C9c53FE6c816eac50e2FcD3db6Bd48f7",
+  "RevenueModule#Revenue": "0x3f63E16D1cAd611414719e063D3f7cD4Ea039c53",
+  "PriceOracleModule#PriceOracle": "0xEd79079F86712d439F5D837DA13bd5Ed1568474e",
+  "FactoryModule#Factory": "0x951BFcC5c5e4db35a48C8E366043eb7C7C571baB"
+}

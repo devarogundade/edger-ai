@@ -5,7 +5,6 @@ import {Enums} from "../lib/Enums.sol";
 import {IWETH} from "../interfaces/IWETH.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IUniswapV2Router02} from "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
-
 abstract contract PoolActions {
     IUniswapV2Router02 internal immutable _swapRouter;
     address internal immutable _factory;
@@ -21,6 +20,8 @@ abstract contract PoolActions {
 
     uint256 constant DIVISOR = 10_000;
     address constant SONIC_COIN = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+
+    receive() external payable {}
 
     function _swapToSingle(
         address[] memory tokensIn,
@@ -48,6 +49,16 @@ abstract contract PoolActions {
                     address(this),
                     block.timestamp + 1
                 );
+            } else if (tokenOut == SONIC_COIN) {
+                IERC20(tokenIn).approve(address(_swapRouter), amountIn);
+
+                _swapRouter.swapExactTokensForETH(
+                    amountIn,
+                    0, // amountOutMin
+                    path,
+                    address(this),
+                    block.timestamp + 1
+                );
             } else {
                 IERC20(tokenIn).approve(address(_swapRouter), amountIn);
 
@@ -59,12 +70,6 @@ abstract contract PoolActions {
                     block.timestamp + 1
                 );
             }
-        }
-
-        if (IERC20(_swapRouter.WETH()).balanceOf(address(this)) > 0) {
-            IWETH(_swapRouter.WETH()).withdraw(
-                IERC20(_swapRouter.WETH()).balanceOf(address(this))
-            );
         }
     }
 
@@ -97,6 +102,16 @@ abstract contract PoolActions {
                     address(this),
                     block.timestamp + 1
                 );
+            } else if (tokenOut == SONIC_COIN) {
+                IERC20(tokenIn).approve(address(_swapRouter), amountIn);
+
+                _swapRouter.swapExactTokensForETH(
+                    amountIn,
+                    0, // amountOutMin
+                    path,
+                    address(this),
+                    block.timestamp + 1
+                );
             } else {
                 IERC20(tokenIn).approve(address(_swapRouter), amountIn);
 
@@ -108,12 +123,6 @@ abstract contract PoolActions {
                     block.timestamp + 1
                 );
             }
-        }
-
-        if (IERC20(_swapRouter.WETH()).balanceOf(address(this)) > 0) {
-            IWETH(_swapRouter.WETH()).withdraw(
-                IERC20(_swapRouter.WETH()).balanceOf(address(this))
-            );
         }
     }
 

@@ -34,6 +34,11 @@ onMounted(() => {
         <Strategy v-for="agent in agents" :agent="agent" @onFork="onFork" :key="agent.strategy_address" />
     </div>
 
+    <div class="empty" v-if="!loading && agents.length == 0">
+        <img src="/images/empty.png" alt="">
+        <p>No strategies.</p>
+    </div>
+
     <ForkPopup v-if="fork" :fork="fork" @close="fork = null" />
 </template>
 

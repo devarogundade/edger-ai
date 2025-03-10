@@ -47,18 +47,18 @@ const Converter = {
   },
 
   toMoney: function (amount: number, max = null) {
-    let maxF = max ? max : 6;
+    let maxF = max ? max : 8;
 
     if (amount > 1) {
-      maxF = 3;
+      maxF = 5;
     }
 
     if (amount > 10) {
-      maxF = 2;
+      maxF = 4;
     }
 
     if (amount > 200) {
-      maxF = 0;
+      maxF = 3;
     }
 
     const formatter = new Intl.NumberFormat("en-US", {

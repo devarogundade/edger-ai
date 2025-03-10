@@ -110,7 +110,7 @@ onMounted(() => {
                 <div class="detail_content">
                     <img :src="'/images/user.png'" alt="">
                     <div class="detail_text">
-                        <h3>{{ post.text }} </h3>
+                        <p>{{ post.text }} </p>
                         <a :href="`${explorerUrl}/address/${post.creator}`" target="_blank">
                             <p>{{ Converter.fineAddress(post.creator, 4) }}
                                 <OutIcon />
@@ -281,8 +281,9 @@ onMounted(() => {
     margin-top: 4px;
 }
 
-.detail_text h3 {
+.detail_text >p {
     font-size: 14px;
+    line-height: 24px;
     font-weight: 500;
     line-height: 14px;
     color: var(--tx-normal);

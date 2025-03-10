@@ -3,7 +3,7 @@ import { explorerUrl, SONIC_COIN, tokens } from '@/scripts/constants';
 import ChevronDownIcon from './icons/ChevronDownIcon.vue';
 import CloseIcon from './icons/CloseIcon.vue';
 import Converter from '@/scripts/converter';
-import { formatEther, parseEther, type Hex } from 'viem';
+import { formatEther, formatUnits, parseUnits, type Hex } from 'viem';
 import { onMounted, ref, watch } from 'vue';
 import { useWalletStore } from '@/stores/wallet';
 import { PriceOracleContract, MultiTokenPoolContract } from '@/scripts/contract';
@@ -61,13 +61,19 @@ const deposit = async () => {
     if (selectedToken.value == SONIC_COIN) {
         txHash = await MultiTokenPoolContract.depositETH(
             props.agent.strategy_address,
-            parseEther(amount.value.toString())
+            parseUnits(
+                amount.value.toString(),
+                tokens.find(t => t.address == selectedToken.value)?.decimals || 18
+            ),
         );
     } else {
         txHash = await MultiTokenPoolContract.deposit(
             props.agent.strategy_address,
             selectedToken.value,
-            parseEther(amount.value.toString())
+            parseUnits(
+                amount.value.toString(),
+                tokens.find(t => t.address == selectedToken.value)?.decimals || 18
+            ),
         );
     }
 
@@ -116,7 +122,12 @@ const getAllowance = async () => {
         props.agent.strategy_address
     );
 
-    allowance.value = Number(formatEther(result));
+    allowance.value = Number(
+        formatUnits(
+            result,
+            tokens.find(t => t.address == selectedToken.value)?.decimals || 18
+        )
+    );
 };
 
 const doApproval = async () => {
@@ -157,7 +168,10 @@ const doApproval = async () => {
     const txHash = await TokenContract.approve(
         selectedToken.value,
         props.agent.strategy_address,
-        parseEther(amount.value.toString())
+        parseUnits(
+            amount.value.toString(),
+            tokens.find(t => t.address == selectedToken.value)?.decimals || 18
+        )
     );
 
     if (txHash) {
@@ -198,18 +212,21 @@ const getBalance = async () => {
         );
     }
 
-    balance.value = Number(formatEther(amount));
+    balance.value = Number(formatUnits(amount, tokens.find(t => t.address == selectedToken.value)?.decimals || 18));
 };
 
 const getPrice = async () => {
     if (!selectedToken.value) return;
 
     const result = await PriceOracleContract.getAmountOutInUsd(
-        parseEther(amount.value.toString()),
+        parseUnits(
+            amount.value.toString(),
+            tokens.find(t => t.address == selectedToken.value)?.decimals || 18
+        ),
         selectedToken.value
     );
 
-    price.value = Number(result);
+    price.value = Number(formatUnits(result, (tokens.find(t => t.address == selectedToken.value)?.decimals || 18) + 8));
 };
 
 const selectingToken = ref(false);

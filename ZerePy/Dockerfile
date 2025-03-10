@@ -25,6 +25,6 @@ RUN poetry install --no-root --extras server
 COPY . .
 
 # Expose the application port
-EXPOSE 80
+EXPOSE 8000
 
 CMD ["poetry", "run", "python", "main.py", "--server"]

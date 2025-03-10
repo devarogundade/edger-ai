@@ -31,7 +31,7 @@ const getTotalLockedValue = async () => {
         tokens
     );
 
-    tvl.value = Number(amountsInUsd);
+    tvl.value = Number(formatEther(amountsInUsd));
 };
 
 onMounted(() => {
