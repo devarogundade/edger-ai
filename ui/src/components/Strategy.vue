@@ -134,7 +134,7 @@ onMounted(() => {
 .asset .tokens>div {
     display: flex;
     align-items: center;
-    gap: 12px;
+    /* gap: 12px; */
 }
 
 .asset .tokens>div p {
@@ -153,8 +153,14 @@ onMounted(() => {
 
 .asset .tokens>div:nth-child(2) img {
     width: 24px;
-    margin-right: -20px;
+    margin-left: -5px;
 }
+
+.asset .tokens>div:nth-child(2) img:first-child {
+    margin-left: 0;
+}
+
+
 
 .asset .tokens>div:nth-child(2) {
     width: 58px;
