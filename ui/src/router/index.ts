@@ -12,6 +12,7 @@ import ChatView from "@/views/chat/ChatView.vue";
 import CreateView from "@/views/create/CreateView.vue";
 import CreateStrategyView from "@/views/create/CreateStrategyView.vue";
 import StrategyView from "@/views/agents/detail/StrategyView.vue";
+import FaucetView from "@/views/FaucetView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,11 +46,11 @@ const router = createRouter({
             },
           ],
         },
-        // {
-        //   path: "/streams/:id",
-        //   name: "explore-streams-stream",
-        //   component: StreamDetail,
-        // },
+        {
+          path: "/faucet",
+          name: "faucet",
+          component: FaucetView,
+        },
         {
           path: "/strategies/:id",
           name: "strategies-strategy",
@@ -76,31 +77,8 @@ const router = createRouter({
           path: "/chat",
           name: "chat",
           component: ChatView,
-          // children: [
-          //   {
-          //     path: "/chat",
-          //     name: "edger-chat",
-          //     component: ChatView,
-          //   },
-          // ],
         },
-        // {
-        //   path: "/channels/:id",
-        //   name: "explore-channels-channel",
-        //   component: ChannelView,
-        //   children: [
-        //     {
-        //       path: "/channels/:id",
-        //       name: "explore-channels-channel-videos",
-        //       component: ChannelVideos,
-        //     },
-        //     {
-        //       path: "/channels/:id/streams",
-        //       name: "explore-channels-channel-streams",
-        //       component: ChannelStreams,
-        //     },
-        //   ],
-        // },
+
         {
           name: "create",
           path: "/create",
@@ -113,11 +91,6 @@ const router = createRouter({
             },
           ],
         },
-        // {
-        //   name: "portfolio-settings",
-        //   path: "/portfolio/settings",
-        //   component: PortfolioSettings,
-        // },
       ],
     },
     {

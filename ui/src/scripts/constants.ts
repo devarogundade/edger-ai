@@ -112,6 +112,7 @@ export const tokens: Token[] = [
     image: "/images/sonic.png",
     address: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     decimals: 18,
+    faucet: 0,
   },
   {
     name: "Bitcoin",
@@ -119,6 +120,7 @@ export const tokens: Token[] = [
     image: "/images/wbtc.png",
     address: "0xc63B428bE56819B7099B51C9Eba72d0dC9fD92CD",
     decimals: 8,
+    faucet: 0.1,
   },
   {
     name: "Ethereum",
@@ -126,6 +128,7 @@ export const tokens: Token[] = [
     image: "/images/weth.png",
     address: "0x34Bb5F9450736c700dfCd63daeCa30a3bBDdAC80",
     decimals: 18,
+    faucet: 0.3,
   },
   {
     name: "USDT",
@@ -133,6 +136,7 @@ export const tokens: Token[] = [
     image: "/images/usdt.png",
     address: "0x8469B773f209bAD3aCDB077c58756643abAF7952",
     decimals: 6,
+    faucet: 5,
   },
 ];
 

@@ -25,6 +25,7 @@ export type Token = {
   symbol: string;
   image: string;
   decimals: number;
+  faucet: number;
 };
 
 export type LLM = {

@@ -6,8 +6,28 @@ import {
   readContract,
 } from "@wagmi/core";
 import { erc20Abi, type Hex } from "viem";
+import { mintableTokenAbi } from "@/abis/token";
+import type { Token } from "./types";
 
 const TokenContract = {
+  async mint(token: Token, amount: bigint): Promise<Hex | null> {
+    try {
+      const result = await writeContract(config, {
+        abi: mintableTokenAbi,
+        address: token.address,
+        functionName: "mint",
+        args: [amount],
+      });
+
+      const receipt = await waitForTransactionReceipt(config, {
+        hash: result,
+      });
+
+      return receipt.transactionHash;
+    } catch (error) {
+      return null;
+    }
+  },
   async getAllowance(token: Hex, wallet: Hex, spender: Hex): Promise<bigint> {
     try {
       return await readContract(config, {

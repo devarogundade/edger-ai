@@ -32,6 +32,7 @@ watch(profile, async () => {
 
                 <div class="tabs">
                     <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/faucet">Faucet</RouterLink>
                     <a href="https://dorahacks.io/buidl/22277" target="_blank">DoraHacks
                         <OutIcon />
                     </a>
