@@ -150,6 +150,7 @@ class ZerePyAgent:
                 prompt_parts.extend(f"- {trait}" for trait in self.traits)
 
             prompt_parts.append(f"Your visibility status is {self.visibility}")
+            prompt_parts.append(f"Your loop delay is seconds is {self.loop_delay}")
             prompt_parts.append(f"Your fork cost is {self.fork_cost} SONIC")
             prompt_parts.append(f"Your minimum deposit is {self.minimum_deposit} USD")
             prompt_parts.append(
