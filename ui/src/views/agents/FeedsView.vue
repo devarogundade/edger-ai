@@ -257,15 +257,15 @@ onMounted(() => {
 }
 
 .detail {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 100px;
     align-items: center;
     justify-content: space-between;
     padding: 22px 20px;
 }
 
 .detail_content {
-    display: grid;
-    grid-template-columns: 1fr 100px;
+    display: flex;
     align-items: flex-end;
     gap: 16px;
 }
@@ -283,10 +283,9 @@ onMounted(() => {
 }
 
 .detail_text>h5 {
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 500;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
     color: var(--tx-normal);
     margin-bottom: 8px;
 }
